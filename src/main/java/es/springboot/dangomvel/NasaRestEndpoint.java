@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -53,6 +54,11 @@ public class NasaRestEndpoint {
 		return ex.getLocalizedMessage();
 	}
 	
+	@ExceptionHandler(MethodArgumentTypeMismatchException.class)
+	public String handleMissingParams(MethodArgumentTypeMismatchException ex) {
+
+	    return "El parámetro tiene que ser un número";
+	}
 	
 	private PetitionResult consumeNasaApi(int days) throws JsonMappingException, JsonProcessingException, ParseException {
 	
