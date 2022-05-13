@@ -64,7 +64,7 @@ public class NasaRestEndpoint {
 		SimpleDateFormat parseador = new SimpleDateFormat("yyyy-MM-dd");
 		LocalDateTime ldt = LocalDateTime.now();
 		String stringFechaActual = parseador.format(Timestamp.valueOf(ldt));
-		ldt.plusDays(days);
+		ldt = ldt.plusDays(days);
 		String stringFechaHasta = parseador.format(Timestamp.valueOf(ldt));
 		return String.format("https://api.nasa.gov/neo/rest/v1/feed?start_date=%s&end_date=%s&api_key=%s",stringFechaActual, stringFechaHasta, apiKey);
 		
