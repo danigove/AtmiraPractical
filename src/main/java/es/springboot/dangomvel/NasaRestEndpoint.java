@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -44,6 +45,12 @@ public class NasaRestEndpoint {
 	    String name = ex.getParameterName();
 
 	    return name + " parameter is missing";
+	}
+	
+	@ExceptionHandler(HttpClientErrorException.class)
+	public String handleError400(HttpClientErrorException ex) {
+	  
+		return ex.getLocalizedMessage();
 	}
 	
 	
