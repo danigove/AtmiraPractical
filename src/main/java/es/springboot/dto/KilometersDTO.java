@@ -34,6 +34,8 @@ public class KilometersDTO {
 	public void setEstimatedDiameterMax(String estimatedDiameterMax) {
 		this.estimatedDiameterMax = estimatedDiameterMax;
 	}
-	
+
+
+
 	
 }
